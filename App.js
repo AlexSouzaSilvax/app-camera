@@ -114,7 +114,7 @@ export default function App() {
             onMountError={e => console.log(e)}
           >
             <TouchableOpacity onPress={capturaFoto} style={styles.button}>
-              <Text
+              {/*<Text
                 style={{
                   color: "white",
                   fontSize: 25,
@@ -123,7 +123,7 @@ export default function App() {
                 }}
               >
                 FOTO
-              </Text>
+              </Text> */}
             </TouchableOpacity>
           </Camera>
         )}
@@ -138,10 +138,12 @@ const styles = StyleSheet.create({
   },
   button: {
     alignSelf: "center",
-    backgroundColor: "red",
-    borderRadius: 50,
-    width: 100,
-    height: 100,
+    backgroundColor: "#F3F3F3",
+    borderWidth: 4,
+    borderColor: "#1B75BB",
+    borderRadius: 40,
+    width: 80,
+    height: 80,
     marginTop: 600,
     justifyContent: "center"
   },
