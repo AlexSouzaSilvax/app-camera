@@ -6,7 +6,8 @@ import {
   ImageBackground,
   StyleSheet,
   PermissionsAndroid,
-  ScrollView
+  ScrollView,
+  Alert
 } from "react-native";
 import CameraRoll from "react-native-cameraroll";
 import { Camera } from "expo-camera";
@@ -43,6 +44,7 @@ export default function App() {
         .takePictureAsync(options)
         .then(e => {
           const { uri, base64 } = e;
+          Alert.alert("Caminho da imagem: " + uri);
           setImageUri(uri);
           console.log("base64: " + base64);
         })
@@ -60,18 +62,21 @@ export default function App() {
           title: "Access Storage",
           message: "Access Storage for the pictures"
         }
-      );*/
-      //if (permissao === PermissionsAndroid.RESULTS.GRANTED) {
+      );
+      if (permissao === PermissionsAndroid.RESULTS.GRANTED) {
       if (permissao) {
         await CameraRoll.saveToCameraRoll(imageUri);
       } else {
         console.log("Permissao de câmera negada.");
       }
+    */
+      await CameraRoll.saveToCameraRoll(imageUri, "photo");
+      Alert.alert("Salva com sucesso");
+      //setImageUri(null);
     } catch (err) {
-      console.warn(err);
+      //console.warn(err);
+      Alert.alert("Erro: " + err);
     }
-
-    setImageUri(null);
   }
 
   if (loading) {
